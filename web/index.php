@@ -1,11 +1,11 @@
 <?php
 
 // Autoload
-require_once __DIR__.'/../src/autoload.php';
+require_once __DIR__.'/../openyard-src/autoload.php';
 
 // Silex
-$app = require __DIR__.'/../src/app.php';
-require __DIR__.'/../src/controllers.php';
+$app = require __DIR__.'/../openyard-src/app.php';
+require __DIR__.'/../openyard-src/controllers.php';
 
 if ($app['debug']) {
     return $app->run();
