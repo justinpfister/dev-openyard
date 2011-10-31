@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../vendor/silex/autoload.php';
+require_once __DIR__ . '/../Silex-KE/vendor/silex/autoload.php';
 
 use Silex\Provider\HttpCacheServiceProvider;
 use Silex\Provider\SessionServiceProvider;
@@ -52,8 +52,8 @@ $app['translator.loader'] = new Symfony\Component\Translation\Loader\YamlFileLoa
 $app->register(new TwigServiceProvider(), array(
     'twig.options'  => array('cache' => false, 'strict_variables' => true),
     'twig.path'     => array(
-        __DIR__ . '/../views/common',
-        __DIR__ . '/../views',
+        __DIR__ . '/../Silex-KE/views/common',
+        __DIR__ . '/../Silex-KE/views',
     )
 ));
 
@@ -71,8 +71,8 @@ $app->register(new DoctrineServiceProvider(), array(
         'user'      => $app['db.config.user'],
         'password'  => $app['db.config.password'],
     ),
-    'db.dbal.class_path'    => __DIR__ . '/../vendor/silex/vendor/doctrine-dbal/lib',
-    'db.common.class_path'  => __DIR__ . '/../vendor/silex/vendor/doctrine-common/lib',
+    'db.dbal.class_path'    => __DIR__ . '/../Silex-KE/vendor/silex/vendor/doctrine-dbal/lib',
+    'db.common.class_path'  => __DIR__ . '/../Silex-KE/vendor/silex/vendor/doctrine-common/lib',
 ));
 
 $app->register(new AsseticExtension(), array(

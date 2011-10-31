@@ -1,6 +1,7 @@
 <?php
 
 #echo phpinfo();
+#exit;
 
 // Autoload
 require_once __DIR__.'/../openyard-src/autoload.php';
