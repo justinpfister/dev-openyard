@@ -1,0 +1,4 @@
+
+Blank PHP page loading:
+    In the NGINX config file, it's important to have the following line:
+    $ fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name; // Specifying the location of the file.

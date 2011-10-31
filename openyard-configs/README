@@ -1,0 +1,122 @@
+*-------------------------*
+* Welcome to Openyard.com *
+*-------------------------*
+
+Most of the files in the Openyard .git repo are designed to help run the e-commerce application as is. However, the server still needs to be built and some libraries such as Symphony, Silex, Doctrine, phpmyadmin have their own git repositories and they are located in places other than the websites root. Therefore, this documents main use is to help us set the server up so that it will optimize the main code.
+
+BASIC DIRECTORY SECURITY:
+---------------------------
+Change Directory            cd /var
+Change ownership            sudo chown -R www-data:webdev /var/www
+Modify ownership            sudo chmod -R ug=wrx,o= www /var/www
+
+
+
+SERVER SETUP NOTES:
+----------------------------
+The server steps should generally be completed in order.
+
+    Create User
+    -----------
+    adduser [justin]
+    groupadd [webdev]
+    usermod -a -G [webdev] [justin]
+    [Allow users in 'admin' group to sudo] -- see : visudo command (Should be good by default)
+    groupadd admin
+    usermod -a -G [admin] [justin]
+
+
+    SECURITY Settings
+    ------------------
+    Disable Root SSH :
+        - sudo nano /etc/ssh/sshd_config
+            -PermitRootLogin no
+        - sudo /etc/init.d/ssh restart
+        
+
+    Application Installation
+    -------------------------
+    sudo apt-get -y update
+    sudo apt-get -y upgrade
+    sudo apt-get -y install aptitude
+    sudo aptitude -y install build-essential
+    sudo apt-get -y install python-software-properties
+
+    Other Seemingly Critical updates :
+    sudo apt-get -y install libxslt1-dev libgd2-xpm-dev libxt-dev libperl-dev
+    sudo aptitude -y install libc6 libpcre3 libpcre3-dev libpcrecpp0 libssl0.9.8 libssl-dev zlib1g zlib1g-dev lsb-base
+
+    Things to think about : apt-get source
+
+    Install NGIN-X
+
+    With APT-GET
+    -----------------------------------
+        add-apt-repository ppa:nginx/stable         Note : ppa helps modify the apt-get dictionary so the nginx (most stable) is retrieved instead of the default.
+        sudo add-apt-repository ppa:nginx/development    Note : most up to date development version
+        apt-get update                              Note : this step is always required after you modify the apt-get repository
+        apt-get install nginx                       Note : install the web server!
+
+    With Source Files
+    ------------------------------------
+        apt-get source nginx
+
+
+
+
+    Install PHP
+    -----------------------------------
+    add-apt repository ppa:ppa:nathan-renniewaldock/ppa   Note : if you want the latest build, you'll need to get connect to a ppa who has completed it. Else don't worry about it.
+    apt-get update
+    apt-get -y install php5                  Note : the exact command needs to be found. but php install is really well documented
+
+    Install MySQL
+    ------------------------------------
+    sudo add-apt repository ppa:ppa:nathan-renniewaldock/ppa   Note : if you want the latest build, you'll need to get connect to a ppa who has completed it. Else don't worry about it.
+    sudo apt-get update
+    sudo apt-get -y install mysql-server                Note : Please verify
+
+    ### Choose No Configuration ###
+
+    Install Memcached
+    ------------------------------------
+    ?                                       Note : Please look up
+
+
+NGINX Server Modifications
+--------------------------
+NGINX should be working at this point, however, the proper config file needs to be loaded
+
+    get config from this .git repo. ( /server_configs/default )
+    restart nginx   " sudo /etc/init.d/nginx restart "
+
+WWW Folder Setup : Note : - it might help to just copy and past the results of 'ls -l' or something. 'ls -l' seemed sloppy but there's got to be a simular command.
+---------------------------
+/var/www/{site_name}/{subdir}
+
+    Current setup:
+    ---------------------
+    openyard development        /var/www/openyard.com/development/
+    openyard stable             /var/www/openyard.com/stable/
+    phpmyadmin                  /var/www/phpmyadmin/
+    testing                     /var/www/testdomain/www/
+
+VENDORS FOLDER INFO:
+Location : /var/www/vendors
+Contents :
+
+/doctrine       Full version of doctrine. https://github.com/doctrine/doctrine2
+                IMPORTANT : run these two commands after you 'git clone' the files
+                    git submodule init
+                    git submodule update
+
+/silex          Current stable version of Silex
+                http://silex.sensiolabs.org/installation
+
+/symfony        Current stable version of Symphony2
+                As Silex's Parent -- this might come in handy. I think Doctrine DBAL requires it.
+                http://symfony.com/download
+
+/twig           Current stable version of Twig
+                http://twig.sensiolabs.org/installation
+

@@ -1,0 +1,38 @@
+GIT HOW-TO's
+--------------------------
+
+
+Git Submodules
+--------------------------
+    ADDING (tested):
+        CD {main git dir}
+        git submodule add {git repo} {dir - no trailing slash}
+        git status {might not show anything?}
+        git submodule init
+            git submodule update --init --recursive
+        CD {inside submodule dir}
+        git pull
+
+        {commit & save}
+        git commit -a
+        git push origin master
+
+    REMOVING (tested):
+        CD {main git dir}
+        nano .gitmodules                        Delete the relevant line from the .gitmodules file.
+        nano .git/config                        Delete the relevant section from .git/config.
+        git rm --cached dir/to/submodule        Run git rm --cached path_to_submodule (no trailing slash).
+
+        git commit -a                           Commit and delete the now untracked submodule files.
+        git push origin master                  Finalize Changes
+
+    NOTES:
+        Once you've added a submodule you can go into the dir and run all the basic git commands (ex. git submodule update)
+
+Removing a file from Github
+-----------------------------
+    CD {git dir}
+    git rm {filename}
+    git commit {might be a more precise way to do this -- be carefull of commiting other files}
+    git push origin master
+

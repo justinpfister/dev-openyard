@@ -1,0 +1,31 @@
+###########
+# Create Web Folder
+#####################
+
+ssh-keygen -t rsa -C "justin@openyard.com"
+
+sudo vi ~/.ssh/id_rsa.pub
+
+Copy key to GitHub SSH ( Myaccount > SSH )
+
+git config --global user.name "Justin Pfister"
+
+git config --global user.email "justin@openyard.com"
+
+git config --global github.token 81f00a2fbf1ceca6c9bd50099f025fd5
+
+git config --global github.user justinpfister
+
+cd ~/
+
+sudo mkdir /var/www
+
+sudo chown -R www-data:webdev /var/www
+
+sudo chmod -R ug=wrx,o= www /var/www
+
+git clone git@github.com:justinpfister/openyard-www.git /var/www/development-openyard
+
+cd /var/www/development-openyard
+
+git submodule update --init --recursive

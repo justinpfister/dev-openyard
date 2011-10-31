@@ -1,0 +1,22 @@
+WINDOWS OS
+
+Steps to Developing on a Client Computer :
+-------------------------------------------
+- Install Phpmystorm (http://www.jetbrains.com)
+- Install msysgit (git program)
+
+- Set PHPStorm Configs
+    - add github username & pw (Settings > Githum)
+    - add location of git.exe (Settings > Version Control > VCS > Git) [Last Known Location : C:\Program Files\Git\bin\git.exe]
+
+- Open the GIT GUI
+    - Help > Show SSH Key
+
+    - $ cd ~/.ssh
+    - $ ssh-keygen -t rsa -C "your_email@youremail.com" // should be your GitHub Email
+    - On the GitHub site Click “Account Settings” > Click “SSH Public Keys” > Click “Add another public key”
+
+- In PHP Storm,
+    - Version Control > Checkout From GitHub
+
+
