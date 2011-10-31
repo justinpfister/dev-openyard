@@ -1,0 +1,3 @@
+[submodule "Silex-KE"]
+	path = Silex-KE
+	url = git://github.com/lyrixx/Silex-Kitchen-Edition.git
