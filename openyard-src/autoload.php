@@ -6,7 +6,7 @@ use Symfony\Component\ClassLoader\UniversalClassLoader;
 
 $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
-    'Symfony'           => array(__DIR__.'/../Silex-KE/vendor/silex/vendor', __DIR__.'/../vendor'),
+    'Symfony'           => array(__DIR__.'/../Silex-KE/vendor/silex/vendor', __DIR__.'/../Silex-KE/vendor'),
     'Silex'             => __DIR__.'/../Silex-KE/vendor/silex/src',
     'SilexExtension'    => __DIR__.'/../Silex-KE/vendor/Silex-extentions/fate/src',
     'Assetic'           => __DIR__.'/../Silex-KE/vendor/assetic/src',

@@ -196,7 +196,7 @@ server {
 # Development - Openyard.com
 server {
     server_name dev.kyotist.com;
-    root /var/www/development-openyard/openyard-www;
+    root /var/www/dev-openyard/web;
     index index.php;
 
     location ~ \.php$ {

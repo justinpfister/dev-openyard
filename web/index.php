@@ -1,7 +1,11 @@
 <?php
 
+#echo phpinfo();
+
 // Autoload
 require_once __DIR__.'/../openyard-src/autoload.php';
+
+
 
 // Silex
 $app = require __DIR__.'/../openyard-src/app.php';
