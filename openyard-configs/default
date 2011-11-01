@@ -93,17 +93,17 @@ rewrite ^(.*) /index.php last;
 
 
 #TEST SERVER
-server {
-	client_max_body_size 3M;
-	server_name test.kyotist.com;
-    root /var/www/testdomain/www;
-    index index.php; #/index.php;
-
-    location ~ .php$ {
-		     fastcgi_pass   127.0.0.1:9000;
-        	 include fastcgi_params;
-       }
-    }
+#server {
+#	client_max_body_size 3M;
+#	server_name test.kyotist.com;
+#    root /var/www/testdomain/www;
+#    index index.php; #/index.php;
+#
+#    location ~ .php$ {
+#		     fastcgi_pass   127.0.0.1:9000;
+#        	 include fastcgi_params;
+#       }
+#    }
 
 
 #phpmyadmin SERVER
@@ -216,6 +216,24 @@ server {
         }
     }
 }
+
+
+# Non-Framework Development Area - Openyard.com
+# It helps to figure stuff out when everything isn't getting routed through a DI / Index.php.. etc. etc.
+# Less headaches!!
+
+server {
+    server_name test.kyotist.com;
+    root /var/www/dev-openyard/non-framework-www;
+    index index.php;
+
+    location ~ \.php$ {
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        include fastcgi_params;
+    }
+ }
+
 
 
 # Toro - Framework
