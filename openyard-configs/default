@@ -233,10 +233,35 @@ server {
         include fastcgi_params;
     }
 
-    location /cdocs/ {
-         root /var/www/dev-openyard/vendor/php-cloudfiles/docs;
+    location /docs/ {
+         root /var/www/dev-openyard/vendor/php-cloudfiles;
      }
  }
+
+
+
+#Image Server -
+server {
+    server_name image.kyotist.com;
+
+    location / {
+
+    try_files http://www.flash-slideshow-maker.com/images/help_clip_image020.jpg;
+
+    #default_type text/plain;
+    #echo "hello, world!";
+    #php /var/www/dev-openyard/non-framework-www/test.php;
+
+    #        if (!-f $request_filename) {
+     #           rewrite ^(.*)(.jpg|.JPG|.gif|.GIF|.png|.PNG)$ /resize$1$2 last;
+      #          }
+        }
+
+       
+ }
+
+
+
 
 
 
