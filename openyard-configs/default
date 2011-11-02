@@ -226,6 +226,10 @@ server {
     server_name test.kyotist.com;
     index index.php index.html;
 
+    location /docs/ {
+         root /var/www/dev-openyard/vendor/php-cloudfiles;
+     }
+
     location ~ \.php$ {
         root /var/www/dev-openyard/non-framework-www;
         fastcgi_pass 127.0.0.1:9000;
@@ -233,30 +237,30 @@ server {
         include fastcgi_params;
     }
 
-    location /docs/ {
-         root /var/www/dev-openyard/vendor/php-cloudfiles;
-     }
  }
 
 
 
 #Image Server -
 server {
-    server_name image.kyotist.com;
+   server_name image.kyotist.com;
 
-    location / {
+  location / {
+        default_type text/html;
+        echo $uri;
 
-    try_files http://www.flash-slideshow-maker.com/images/help_clip_image020.jpg;
+        try_files @openyard @openyard;
 
-    #default_type text/plain;
-    #echo "hello, world!";
-    #php /var/www/dev-openyard/non-framework-www/test.php;
-
-    #        if (!-f $request_filename) {
-     #           rewrite ^(.*)(.jpg|.JPG|.gif|.GIF|.png|.PNG)$ /resize$1$2 last;
-      #          }
         }
 
+location @openyard {
+  rewrite      /([^/]+)  /test.php?rer=erer&test=$1  break;
+  proxy_pass http://test.kyotist.com;
+}
+
+#location @google {
+#  proxy_pass http://www.google.com;
+#}
        
  }
 
