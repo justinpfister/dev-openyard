@@ -246,13 +246,20 @@ server {
 server {
    server_name ic.kyotist.com;
    root /var/www/dev-openyard/image-cacher;
+   index index.php;
 
   # Step 1 -- Load from the cloud. If 404, then load local file.
   location / {
-      rewrite      /(.+)  /test.php?img=$1 break;
+
+      #rewrite      /(.+)  /test.php?img=$1 break;
       proxy_intercept_errors on;
-      proxy_pass http://ic.kyotist.com;
+      proxy_pass http://dev.kyotist.com;
       error_page 404  = @fallback;
+        #fastcgi_pass 127.0.0.1:9000;
+        #fastcgi_index index.php;
+        #include fastcgi_params;
+        #fastcgi_param  SCRIPT_FILENAME    $document_root/index.php;
+
         }
   # Step 2 -- Load Local File -- Cache to Cloud.
     location @fallback {
