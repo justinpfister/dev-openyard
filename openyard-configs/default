@@ -226,7 +226,8 @@ server {
     server_name test.kyotist.com;
     index index.php index.html;
 
-    location /docs/ {
+    location /docs {
+         #index index.html;
          root /var/www/dev-openyard/vendor/php-cloudfiles;
      }
 
@@ -245,26 +246,19 @@ server {
 server {
    server_name image.kyotist.com;
 
+  # Step 1 -- Load from the cloud. If 404, then load local file.
   location / {
-        default_type text/html;
-        echo $uri;
-
-        try_files @openyard @openyard;
-
+      rewrite      /(.+)  /test.php?img=$1 break;
+      proxy_intercept_errors on;
+      proxy_pass http://test.kyotist.com;
+      error_page 404  = @fallback;
         }
-
-location @openyard {
-  rewrite      /([^/]+)  /test.php?rer=erer&test=$1  break;
-  proxy_pass http://test.kyotist.com;
+  # Step 2 -- Load Local File -- Cache to Cloud.
+    location @fallback {
+      rewrite    ^(.+)$  /test.php?img=onjava.com/onjava/2003/04/02/graphics/figure3.jpg? break;
+      proxy_pass http://test.kyotist.com;
+          }
 }
-
-#location @google {
-#  proxy_pass http://www.google.com;
-#}
-       
- }
-
-
 
 
 
