@@ -1,14 +1,13 @@
 <?
 
+
+echo $_GET['img'];
+
 //if (!isset($_GET['img'])) {
 //    echo 'no img';
 //    exit;
 //}
 
-    #echo "test works";
-    #exit;
-
-#echo $_GET['img'];
 
 // create curl resource
         $ch = curl_init();

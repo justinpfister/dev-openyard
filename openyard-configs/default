@@ -263,7 +263,7 @@ server {
         }
   # Step 2 -- Load Local File -- Cache to Cloud.
     location @fallback { 
-      rewrite    ^(.+)$  /?img=onjava.com/onjava/2003/04/02/graphics/figure3.jpg? break;
+      rewrite    /(.+)  /?img=$1? break;
       fastcgi_pass 127.0.0.1:9000;
       fastcgi_index index.php;
       include fastcgi_params;
