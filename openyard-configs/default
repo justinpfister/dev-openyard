@@ -262,9 +262,12 @@ server {
 
         }
   # Step 2 -- Load Local File -- Cache to Cloud.
-    location @fallback {
-      rewrite    ^(.+)$  /test.php?img=onjava.com/onjava/2003/04/02/graphics/figure3.jpg? break;
-      proxy_pass http://ic.kyotist.com;
+    location @fallback { 
+      rewrite    ^(.+)$  /?img=onjava.com/onjava/2003/04/02/graphics/figure3.jpg? break;
+      fastcgi_pass 127.0.0.1:9000;
+      fastcgi_index index.php;
+      include fastcgi_params;
+      fastcgi_param  SCRIPT_FILENAME    $document_root/index.php;
           }
 }
 
