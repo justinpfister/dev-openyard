@@ -244,19 +244,20 @@ server {
 
 #Image Server -
 server {
-   server_name image.kyotist.com;
+   server_name ic.kyotist.com;
+   root /var/www/dev-openyard/image-cacher;
 
   # Step 1 -- Load from the cloud. If 404, then load local file.
   location / {
       rewrite      /(.+)  /test.php?img=$1 break;
       proxy_intercept_errors on;
-      proxy_pass http://test.kyotist.com;
+      proxy_pass http://ic.kyotist.com;
       error_page 404  = @fallback;
         }
   # Step 2 -- Load Local File -- Cache to Cloud.
     location @fallback {
       rewrite    ^(.+)$  /test.php?img=onjava.com/onjava/2003/04/02/graphics/figure3.jpg? break;
-      proxy_pass http://test.kyotist.com;
+      proxy_pass http://ic.kyotist.com;
           }
 }
 
