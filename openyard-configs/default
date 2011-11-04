@@ -269,6 +269,11 @@ server {
       include fastcgi_params;
       fastcgi_param  SCRIPT_FILENAME    $document_root/index.php;
           }
+
+    location @testcdn {
+            default_type text/html;
+        echo "<h1>did not hit CND</h1>";
+    }
 }
 
 

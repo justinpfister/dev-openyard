@@ -4,13 +4,16 @@ require_once __DIR__ . '/../vendor/php-cloudfiles/cloudfiles.php';
 
 #cf('tempfolder/30heidilane.jpg');
 $basedir = __DIR__ . "/../web/";
+$requestimg = $_GET['img'];
 $filelocation = $_GET['img'];
-
-echo $_GET['img'];
+$imagemod = FALSE;
+#echo $_GET['img'];
 
 $reg1pat = '/([^_]+)(_[^.]+.)(jpg|png|gif)/';
 
 preg_match($reg1pat,$filelocation,$matches);
+
+
 
 if(count($matches) == 4) {
     $filelocation = $matches[1] . $matches[3];
@@ -23,7 +26,7 @@ if(count($matches) == 4) {
     $vals = $varray[2];
     $varvalarray = array_combine($vars,$vals);
 
-    print_r($varvalarray);
+    $imagemod = TRUE;
 
 }
 
@@ -32,6 +35,39 @@ if(count($matches) == 4) {
 if(!file_exists($basedir . $filelocation)) {
       header("HTTP/1.0 404 Not Found");
       exit;
+}
+
+
+if(    $imagemod == TRUE
+    && isset($varvalarray['SL'])
+    && isset($varvalarray['SY'])
+    && ($varvalarray['SL'] >= 5 && $varvalarray['SL'] <= 1000)
+    && ($varvalarray['SY'] >= 5 && $varvalarray['SY'] <= 1000)
+) {
+    $im = resize_image($basedir . $filelocation,$varvalarray['SL'],$varvalarray['SY']);
+
+} elseif($imagemod == FALSE) {
+
+    $im = imagecreatefromjpeg($basedir . $filelocation);
+
+} else {
+
+    header("HTTP/1.0 404 Not Found");
+    exit;
+
+}
+
+   header('Content-Type: image/png');
+   imagepng($im);
+
+   $tempimg = tempnam('/tmp/','img');
+   imagejpeg($im,$tempimg);
+
+     #cloudfiles magic
+     cf($requestimg,$tempimg);
+
+    unlink($tempimg);
+    imagedestroy($im);
 
 
 
@@ -66,57 +102,8 @@ function cf($filename,$tmplocation) {
 
           #var_dump($all_objects);
 
-            #return "ok";
+           return "ok";
 }
-
-// create curl resource
- #       $ch = curl_init();
-
-        // set url
-#        curl_setopt($ch, CURLOPT_URL, 'http://' . $_GET['img']);
-
-        //return the transfer as a string
- #       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-        // $output contains the output string
-#        $output = curl_exec($ch);
-
-        // close curl resource to free up system resources
-#        curl_close($ch);
-
-//Display the image in the browser
-//header('Content-type: image/jpg');
-
-
-
-}
-
-# Nitty Gritty Details
-
-  
-
-$im = resize_image($basedir . $filelocation,125,125);
-
-    header('Content-Type: image/png');
-   imagepng($im);
-
-  #  $tempimg = tempnam('/tmp/','img');
-
-#    imagejpeg($im,$tempimg);
-    //fseek($tempimg, 0);
-
-        #cloudfiles magic
- #       cf($filelocation,$tempimg);
-
-  #  unlink($tempimg);
-   # imagedestroy($im);
-#}
-#else {
- #   echo 'An error occurred.';
-#}
-
-
-
 
 
 
@@ -146,8 +133,6 @@ function resize_image($file, $w, $h, $crop=FALSE) {
 
     return $dst;
 }
-
-
 
 
 ?>
