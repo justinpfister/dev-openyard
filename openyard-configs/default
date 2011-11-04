@@ -253,7 +253,7 @@ server {
 
       #rewrite      /(.+)  /test.php?img=$1 break;
       proxy_intercept_errors on;
-      proxy_pass http://dev.kyotist.com;
+      proxy_pass http://c803081.r81.cf2.rackcdn.com;
       error_page 404  = @fallback;
         #fastcgi_pass 127.0.0.1:9000;
         #fastcgi_index index.php;
