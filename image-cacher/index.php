@@ -2,7 +2,6 @@
 
 require_once __DIR__ . '/../vendor/php-cloudfiles/cloudfiles.php';
 
-#cf('tempfolder/30heidilane.jpg');
 $basedir = __DIR__ . "/../web/";
 $requestimg = $_GET['img'];
 $filelocation = $_GET['img'];
@@ -27,6 +26,13 @@ if(count($matches) == 4) {
     $varvalarray = array_combine($vars,$vals);
 
     $imagemod = TRUE;
+
+    if( count($varvalarray) != count($vals) || count($varvalarray) != count($vars)) {
+          #the number of var/val combos should be equal. 
+          header("HTTP/1.0 404 Not Found");
+          exit;
+    }
+
 
 }
 
@@ -59,6 +65,12 @@ if(    $imagemod == TRUE
 
    header('Content-Type: image/png');
    imagepng($im);
+
+   // Force browser to close connection -- but run image resizing / cf uploading in the background.
+   header("Content-Length: 0");
+   header("Connection: close");
+   flush();
+   // browser should disconnect at this point
 
    $tempimg = tempnam('/tmp/','img');
    imagejpeg($im,$tempimg);

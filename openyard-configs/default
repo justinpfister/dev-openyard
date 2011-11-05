@@ -247,6 +247,7 @@ server {
    server_name ic.kyotist.com;
    root /var/www/dev-openyard/image-cacher;
    index index.php;
+   
 
   # Step 1 -- Load from the cloud. If 404, then load local file.
   location / {
@@ -263,17 +264,14 @@ server {
         }
   # Step 2 -- Load Local File -- Cache to Cloud.
     location @fallback { 
+    #types { text/html     jpg gif png html; }
+    #echo "did not load from cdn";
       rewrite    /(.+)  /?img=$1? break;
       fastcgi_pass 127.0.0.1:9000;
       fastcgi_index index.php;
       include fastcgi_params;
       fastcgi_param  SCRIPT_FILENAME    $document_root/index.php;
           }
-
-    location @testcdn {
-            default_type text/html;
-        echo "<h1>did not hit CND</h1>";
-    }
 }
 
 
