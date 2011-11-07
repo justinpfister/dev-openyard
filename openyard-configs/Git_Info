@@ -2,6 +2,19 @@ GIT HOW-TO's
 --------------------------
 
 
+Refreshing a Repo (on the server):
+================================
+1) git checkout master0.01(branch etc)
+2) git reset --hard
+3) git clean -n (test run)
+4) git clean -f (force)
+
+
+
+
+
+
+
 Git Submodules
 --------------------------
     ADDING (tested):
