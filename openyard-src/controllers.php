@@ -10,48 +10,6 @@ use Symfony\Component\Form\FormError;
 
 use Silex\Provider\DoctrineServiceProvider;
 
-  $app['pdo'] = $app->share(function() use ($app) {
-    $dsn = 'mysql:dbname=' . $app['db.config.dbname'] . ';host=' . $app['db.config.host'];
-    return new Pdo($dsn, $app['db.config.user'], $app['db.config.password']);
-  });
-
-// Use database for session storage
-  $app['session.storage'] = $app->share(function () use ($app) {
-    return new Symfony\Component\HttpFoundation\SessionStorage\PdoSessionStorage(
-      $app['pdo'],
-      $app['session.storage.options'],
-      array('db_table' => 'session',
-            'db_id_col' => 'id',
-            'db_data_col' => 'data',
-            'db_time_col' => 'timestamp'));
-  });
-
-
-// Session Management
-$app->get('/setup', function () use ($app) {
-  // (Re)create database structure for storing sessions
-  $app['pdo']->query('DROP TABLE `session`');
-  $app['pdo']->query('CREATE TABLE `session` (
-                        `id` varchar(255) NOT NULL,
-                        `data` text NOT NULL,
-                        `timestamp` int(11) NOT NULL,
-                        PRIMARY KEY (`id`),
-                        UNIQUE KEY `session_id_idx` (`id`))
-                        ENGINE=InnoDB DEFAULT CHARSET=utf8');
-
-  $app['session']->start();
-  $app['session']->setFlash('success', 'The datebase has been initialized successfully.');
-  return $app->redirect($app['url_generator']->generate('frontpage'));
-})->bind('setup');
-
-
-
-
-
-
-
-
-
 
 $app->match('/hello/{lang}/{name}', function($lang,$name) use ($app) {
 
