@@ -1,3 +1,6 @@
 [submodule "Silex-KE"]
 	path = Silex-KE
 	url = git://github.com/lyrixx/Silex-Kitchen-Edition.git
+[submodule "vendor/php-cloudfiles"]
+	path = vendor/php-cloudfiles
+	url = https://github.com/rackspace/php-cloudfiles.git
