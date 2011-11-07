@@ -12,6 +12,8 @@ use Silex\Provider\TranslationServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
 
+use Symfony\Bridge\Doctrine\HttpFoundation\DbalSessionStorage;
+
 use SilexExtension\AsseticExtension;
 use SilexExtension\MemcacheExtension;
 
@@ -20,9 +22,11 @@ $app = new Silex\Application();
 
 require __DIR__ . '/../openyard-src/config.php';
 
+$app->register(new SessionServiceProvider());
+// Dbal Sessions are activated below the Dbal Register
+
 $app->register(new HttpCacheServiceProvider());
 
-$app->register(new SessionServiceProvider());
 $app->register(new SymfonyBridgesServiceProvider());
 $app->register(new ValidatorServiceProvider());
 $app->register(new FormServiceProvider());
@@ -71,9 +75,11 @@ $app->register(new DoctrineServiceProvider(), array(
         'user'      => $app['db.config.user'],
         'password'  => $app['db.config.password'],
     ),
-    'db.dbal.class_path'    => __DIR__ . '/../Silex-KE/vendor/silex/vendor/doctrine-dbal/lib',
-    'db.common.class_path'  => __DIR__ . '/../Silex-KE/vendor/silex/vendor/doctrine-common/lib',
+    'db.dbal.class_path'    => __DIR__ . '/../vendor/silex/vendor/doctrine-dbal/lib',
+    'db.common.class_path'  => __DIR__ . '/../vendor/silex/vendor/doctrine-common/lib',
 ));
+
+$app['session.storage'] = new DbalSessionStorage($app['db'], 'sessions');
 
 $app->register(new AsseticExtension(), array(
     'assetic.options' => array(
