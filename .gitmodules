@@ -7,3 +7,6 @@
 [submodule "vendor/symfony"]
 	path = vendor/symfony
 	url = https://github.com/symfony/symfony.git
+[submodule "vendor/silex"]
+	path = vendor/silex
+	url = https://github.com/fabpot/Silex.git
