@@ -32,10 +32,18 @@ class ProductManager {
               $test = $this->app['db'];
               $results = $test->fetchAll('SELECT * FROM users');
               var_dump($results);
-        
-        
-        echo "test";
 
+
+    }
+
+    public function showsession($session) {
+        $test = $this->app['db'];
+        $sql = "SELECT sess_data FROM sessions WHERE sess_id = '" . $session . "'";
+        $results = $test->fetchAll($sql);
+        echo "<br>";
+        echo base64_decode($results[0]['sess_data']);
+        echo "<br>";
+        echo $results[0]['sess_data'];
     }
 
 }

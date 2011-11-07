@@ -71,6 +71,23 @@ $app->match('/p/{prodid}/{title}', function($prodid,$title) use ($app) {
 });
 
 
+$app->match('/session', function() use ($app) {
+
+        echo "[SessionID" . $app['session']->getId() . "]";
+        echo "<h1>data</h1>";
+        print_r($app['session']);
+
+//
+//        $test3 = new $app['productdata'];
+//        $test3->setTest(34);
+//         echo $test3->getTest();
+//
+//        $test3->setApp($app);
+//        $test3->showsession($app['session']->getId());
+
+
+    return $app['twig']->render('layout.html.twig');
+});
 
 
 
@@ -112,6 +129,8 @@ $app->match('/login', function() use ($app) {
                 $app['session']->set('user', array(
                     'email' => $email,
                 ));
+
+                $app['session']->set('username','justinpfister');
 
                 $app['session']->setFlash('notice', 'You are now connected');
 
