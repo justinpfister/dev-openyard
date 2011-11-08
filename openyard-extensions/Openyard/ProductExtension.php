@@ -18,9 +18,14 @@ class ProductExtension implements ServiceProviderInterface {
             return new ProductProvider();
         });
 
-        // ProductManager
+        // ProductManager -- Database Specific
         $app['productdata'] = $app->share(function() use($app){
             return new ProductManager();
+        });
+
+        // ProductSearch -- Product Search
+        $app['productsearch'] = $app->share(function() use($app){
+            return new ProductSearch();
         });
 
 

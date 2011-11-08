@@ -10,7 +10,6 @@ use Symfony\Component\Form\FormError;
 
 use Silex\Provider\DoctrineServiceProvider;
 
-
 $app->match('/hello/{lang}/{name}', function($lang,$name) use ($app) {
 
     return $app['twig']->render('layout.html.twig', array(
@@ -20,6 +19,19 @@ $app->match('/hello/{lang}/{name}', function($lang,$name) use ($app) {
 
 
 
+$app->get('/{type}/{searchstring}', function($type, $searchstring) use ($app) {
+
+        $app->before(function () {
+    // set up
+});
+
+$search = new $app['productsearch'];
+        echo $search->hello();
+
+
+    return $app['twig']->render('layout.html.twig');
+})
+->assert('type','[SCsc]{1}');
 
 
 
@@ -70,10 +82,22 @@ $app->match('/p/{prodid}/{title}', function($prodid,$title) use ($app) {
     return $app['twig']->render('layout.html.twig');
 });
 
+$app->match('/setflash/{flash}', function($flash) use ($app) {
+
+        echo "SessionID : " . $app['session']->getId();
+        echo "<h1>set flash</h1>";
+        echo $flash;
+        $app['session']->setFlash('notice', $flash);
+        echo "<br>flash set";
+
+    return $app['twig']->render('layout.html.twig');
+});
+
+
 
 $app->match('/session', function() use ($app) {
 
-        echo "[SessionID" . $app['session']->getId() . "]";
+         echo "SessionID : " . $app['session']->getId();
         echo "<h1>data</h1>";
         print_r($app['session']);
 
@@ -84,6 +108,8 @@ $app->match('/session', function() use ($app) {
 //
 //        $test3->setApp($app);
 //        $test3->showsession($app['session']->getId());
+
+
 
 
     return $app['twig']->render('layout.html.twig');

@@ -2,7 +2,6 @@
 namespace Openyard;
 
 use Silex\Application;
-//use Silex\Provider\DoctrineServiceProvider;
 
 class ProductManager {
     private $test;
