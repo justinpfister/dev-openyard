@@ -1,0 +1,10 @@
+Jet Brains - PhpStorm
+======================
+
+Getting to work on an older setup
+
+Git Fetch
+Delete untracked files in the Version Control Area
+Git Reset --HARD
+
+
