@@ -7,4 +7,4 @@ Git Fetch
 Delete untracked files in the Version Control Area
 Git Reset --HARD
 
-
+This is a start to figuring out this madness
