@@ -15,10 +15,17 @@
         <script src="{{ app.request.basepath }}/js/libs/modernizr-2.0.6.min.js"></script>
     </head>
     <body>
-        <div id="main-container">
+        <div id="main-container" class="container-fluid">
+
+        <div class="sidebar">
+            {% block sidebar %}
+            {% endblock %}
+        </div>
+
+        <div class="content">
             {% include ('common/header.html.twig') %}
 
-            <div id="main" role="main" class="container">
+            <div id="main" role="main" class="container-fluid">
                 {% include ('common/notice.html.twig') %}
 
                 {% block content %}
@@ -29,8 +36,9 @@
                         Your a not logged. Please <a href="{{ path('login') }}">{{ 'connect'|trans }}</a>
                     {% endif %}
                 {% endblock %}
+        </div>
 
-            </div>
+        </div>
 
             {% include ('common/footer.html.twig') %}
         </div> <!--! /#main-container -->

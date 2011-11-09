@@ -53,10 +53,10 @@ $app->get('/r/{searchstring}', function($searchstring) use ($app)
                     break;
             endswitch;
 
-            print_r($search);
+            //print_r($search);
         }
 
-         return $app['twig']->render('layout.html.twig');
+         return $app['twig']->render('results.html.twig');
     })  ->bind('r.searchstring')
         ->assert('searchstring', '.+');
 

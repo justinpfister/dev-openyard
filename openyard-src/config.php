@@ -2,10 +2,10 @@
 
 // Databases
 $app['db.config.driver']    = 'pdo_mysql';
-$app['db.config.dbname']    = 'testdb';
+$app['db.config.dbname']    = 'openyard4';
 $app['db.config.host']      = '50-57-163-193.static.cloud-ips.com';
-$app['db.config.user']      = 'test';
-$app['db.config.password']  = 'test';
+$app['db.config.user']      = 'oydev';
+$app['db.config.password']  = 'XKp2XXJ88qYF5myP';
 
 // Debug
 $app['debug'] = true;
