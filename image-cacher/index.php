@@ -43,13 +43,22 @@ if(!file_exists($basedir . $filelocation)) {
       exit;
 }
 
+// validates the size.. we don't want to be getting crushed with violent image requests.
+function validsize($hw,$options) {
+    if ( !is_array($hw) || !is_array($options) ) return false;
+    $intersect = array_intersect($hw,$options);
+    if ( count(array_unique($intersect)) == count(array_unique($hw)) ) {
+        return true;
+         } else {
+        return false;
+    }
+}
 
 if(    $imagemod == TRUE
     && isset($varvalarray['SL'])
     && isset($varvalarray['SY'])
-    && ($varvalarray['SL'] >= 5 && $varvalarray['SL'] <= 1000)
-    && ($varvalarray['SY'] >= 5 && $varvalarray['SY'] <= 1000)
-) {
+    && validsize(array($varvalarray['SL'],$varvalarray['SY']),array(100,200,250,300,500,800)) == true)
+ {
     $im = resize_image($basedir . $filelocation,$varvalarray['SL'],$varvalarray['SY']);
 
 } elseif($imagemod == FALSE) {
@@ -63,7 +72,7 @@ if(    $imagemod == TRUE
 
 }
 
-   header('Content-Type: image/png');
+  header('Content-Type: image/png');
    imagepng($im);
 
    // Force browser to close connection -- but run image resizing / cf uploading in the background.
