@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\FormError;
 
 use Silex\Provider\DoctrineServiceProvider;
+use Openyard\ProductSearch;
 
 $app->match('/hello/{lang}/{name}', function($lang,$name) use ($app) {
 
@@ -21,15 +22,22 @@ $app->match('/hello/{lang}/{name}', function($lang,$name) use ($app) {
 //Product Category
 $app->get('/r/{searchstring}', function($searchstring) use ($app)
     {
+        # EXAMPLE - URL
         # /r/c_1_soccer-goals/p_12-23/a_soccer/a_youth/
+
+        // Initialize Search Param Object
+         $search = new $app['productsearch'];
 
         foreach (explode('/', $searchstring) as $se) {
 
-            if ($se == '') continue;
+            $parambreak = explode('_',$se);
 
-            switch (strtolower($se[0])):
+            if ($parambreak[0] == '') continue;
+
+            switch (strtolower($parambreak[0])):
                 case 'c':
-                    echo 'cat';
+                    $search->setCategoryName($parambreak[2]);
+                    $search->setCategoryId($parambreak[1]);
                     break;
                 case 's':
                     echo 'search';
@@ -38,21 +46,18 @@ $app->get('/r/{searchstring}', function($searchstring) use ($app)
                     echo 'price';
                     break;
                 case 'a':
-                    echo 'attrib';
+                    $search->addAttributes($parambreak[1]);
                     break;
                 case 'b':
                     echo 'brand';
                     break;
             endswitch;
 
+            print_r($search);
         }
 
-
-        $search = new $app['productsearch'];
-        $search->setCategory(12);
-
-        return $app['twig']->render('layout.html.twig');
-    })
+         return $app['twig']->render('layout.html.twig');
+    })  ->bind('r.searchstring')
         ->assert('searchstring', '.+');
 
 
@@ -77,6 +82,9 @@ $app->match('/p/{prodid}/{title}', function($prodid,$title) use ($app) {
 
         //var_dump($app['session']);
         //echo $app['session']->read('email');
+
+        $app['session']->setFlash('notice', 'altered your search string!');
+        return $app->redirect($app['url_generator']->generate('r.searchstring', array('searchstring'=>'c_12_test')));
 
         echo "[SessionID" . $app['session']->getId() . "]";
 

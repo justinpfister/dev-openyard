@@ -5,16 +5,17 @@ namespace Openyard;
 class ProductSearch
 {
     private $phrases;
-    private $tags;
-    private $attributes;
-    private $category;
+    private $tags = array();
+    private $attributes = array();
+    private $categoryid;
+    private $categoryname;
 
 
     function __construct() {}
 
     public function addAttributes($attributes)
     {
-        $this->attributes = $attributes;
+        $this->attributes[] = $attributes;
     }
 
     public function removeAttributes($attributes)
@@ -26,25 +27,34 @@ class ProductSearch
         $this->phrases = $phrases;
     }
 
-    public function setTags($tags)
+    public function addTags($tags)
     {
-        $this->tags = $tags;
+        $this->tags[] = $tags;
     }
-
-    public function setCategory($category)
-    {
-        $this->category = $category;
-    }
-
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
 
     public function hello()
     {
         return 'world';
+    }
+
+    public function setCategoryId($categoryid)
+    {
+        $this->categoryid = $categoryid;
+    }
+
+    public function getCategoryId()
+    {
+        return $this->categoryid;
+    }
+
+    public function setCategoryName($categoryname)
+    {
+        $this->categoryname = $categoryname;
+    }
+
+    public function getCategoryName()
+    {
+        return $this->categoryname;
     }
 
 }
