@@ -10,3 +10,6 @@
 [submodule "vendor/silex"]
 	path = vendor/silex
 	url = https://github.com/fabpot/Silex.git
+[submodule "vendor/Twitter-bootstrap"]
+	path = vendor/Twitter-bootstrap
+	url = https://github.com/twitter/bootstrap.git
