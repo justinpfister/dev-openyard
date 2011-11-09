@@ -16,3 +16,6 @@
 [submodule "vendor/assetic"]
 	path = vendor/assetic
 	url = https://github.com/kriswallsmith/assetic.git
+[submodule "vendor/Silex-extentions"]
+	path = vendor/Silex-extentions
+	url = https://github.com/fate/Silex-Extensions.git
