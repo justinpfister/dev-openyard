@@ -56,8 +56,8 @@ $app['translator.loader'] = new Symfony\Component\Translation\Loader\YamlFileLoa
 $app->register(new TwigServiceProvider(), array(
     'twig.options'  => array('cache' => false, 'strict_variables' => true),
     'twig.path'     => array(
-        __DIR__ . '/../Silex-KE/views/common',
-        __DIR__ . '/../Silex-KE/views',
+        __DIR__ . '/../views/common',
+        __DIR__ . '/../views',
     )
 ));
 

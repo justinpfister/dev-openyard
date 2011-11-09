@@ -17,6 +17,7 @@ $app['translator.messages'] = array(
     'en' => __DIR__.'/../resources/locales/en.yml',
     'fr' => __DIR__.'/../resources/locales/fr.yml',
     'es' => __DIR__.'/../resources/locales/es.yml',
+    'pl' => __DIR__.'/../resources/locales/piglatin.yml',
 
 
 );
