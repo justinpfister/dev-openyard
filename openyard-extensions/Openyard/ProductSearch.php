@@ -7,6 +7,7 @@ class ProductSearch
     private $phrases;
     private $tags;
     private $attributes;
+    private $category;
 
 
     function __construct() {}
@@ -29,6 +30,17 @@ class ProductSearch
     {
         $this->tags = $tags;
     }
+
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
 
     public function hello()
     {

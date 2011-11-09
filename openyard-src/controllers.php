@@ -18,20 +18,52 @@ $app->match('/hello/{lang}/{name}', function($lang,$name) use ($app) {
 });
 
 
+//Product Category
+$app->get('/r/{searchstring}', function($searchstring) use ($app)
+    {
+        # /r/c_1_soccer-goals/p_12-23/a_soccer/a_youth/
 
-$app->get('/{type}/{searchstring}', function($type, $searchstring) use ($app) {
+        foreach (explode('/', $searchstring) as $se) {
 
-        $app->before(function () {
-    // set up
-});
+            if ($se == '') continue;
 
-$search = new $app['productsearch'];
-        echo $search->hello();
+            switch (strtolower($se[0])):
+                case 'c':
+                    echo 'cat';
+                    break;
+                case 's':
+                    echo 'search';
+                    break;
+                case 'p':
+                    echo 'price';
+                    break;
+                case 'a':
+                    echo 'attrib';
+                    break;
+                case 'b':
+                    echo 'brand';
+                    break;
+            endswitch;
+
+        }
 
 
-    return $app['twig']->render('layout.html.twig');
-})
-->assert('type','[SCsc]{1}');
+        $search = new $app['productsearch'];
+        $search->setCategory(12);
+
+        return $app['twig']->render('layout.html.twig');
+    })
+        ->assert('searchstring', '.+');
+
+
+//Product Category
+$app->get('/{type}/{searchstring}', function($type, $searchstring) use ($app)
+    {
+
+        $search = new $app['productsearch'];
+        return $app['twig']->render('layout.html.twig');
+    })
+        ->assert('type', '[Ss]{1}');
 
 
 
