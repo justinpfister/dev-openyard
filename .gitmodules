@@ -13,3 +13,6 @@
 [submodule "vendor/Twitter-bootstrap"]
 	path = vendor/Twitter-bootstrap
 	url = https://github.com/twitter/bootstrap.git
+[submodule "vendor/assetic"]
+	path = vendor/assetic
+	url = https://github.com/kriswallsmith/assetic.git
