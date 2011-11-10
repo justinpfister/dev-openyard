@@ -8,3 +8,9 @@ sudo chown -R www-data:webdev /var/www
 
 sudo chmod -R ug=wrx,o= /var/www
 
+
+#Boot strap permisions
+sudo chown -R www-data:webdev /var/www/*/web/assets
+
+sudo chmod -R ug=wrx,o= /var/www/*/web/assets
+
