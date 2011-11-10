@@ -31,7 +31,7 @@ $app['http_cache.cache_dir'] = $app['cache.path'] . '/http';
 
 // Assetic
 $app['assetic.path_to_cache']       = $app['cache.path'] . DIRECTORY_SEPARATOR . 'assetic' ;
-$app['assetic.path_to_web']         = __DIR__ . '/../www/assets';
+$app['assetic.path_to_web']         = __DIR__ . '/../web/assets';
 
 $app['assetic.input.path_to_bootstrap']    = __DIR__ . '/../vendor/Twitter-bootstrap';
 $app['assetic.input.path_to_css']       = $app['assetic.input.path_to_bootstrap'] . '/*.css';
