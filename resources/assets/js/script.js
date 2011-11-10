@@ -1,3 +1,0 @@
-$('.topbar').dropdown()
-
-$(".close").alert()
