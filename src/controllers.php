@@ -159,7 +159,7 @@ $app->match('/session', function() use ($app) {
 
 $app->match('/', function() use ($app) {
 
-    return $app['twig']->render('openyard.layout.html.twig');
+    return $app['twig']->render('layout.html.twig');
 })->bind('homepage');
 
 $app->match('/login', function() use ($app) {
