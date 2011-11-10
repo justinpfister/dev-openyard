@@ -19,3 +19,6 @@
 [submodule "vendor/Silex-extentions"]
 	path = vendor/Silex-extentions
 	url = https://github.com/fate/Silex-Extensions.git
+[submodule "vendor/Twig-extensions"]
+	path = vendor/Twig-extensions
+	url = https://github.com/fabpot/Twig-extensions.git
