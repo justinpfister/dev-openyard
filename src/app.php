@@ -17,6 +17,7 @@ use Symfony\Bridge\Doctrine\HttpFoundation\DbalSessionStorage;
 use SilexExtension\AsseticExtension;
 use SilexExtension\MemcacheExtension;
 
+use Openyard\ProductExtension;
 
 $app = new Silex\Application();
 
