@@ -8,8 +8,8 @@ $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
     'Symfony'           => array(__DIR__.'/../vendor/symfony/src', __DIR__.'/../vendor/symfony/src'),
     'Silex'             => __DIR__.'/../vendor/silex/src',
-    'SilexExtension'    => __DIR__.'/../Silex-KE/vendor/Silex-extentions/fate/src',
-    'Assetic'           => __DIR__.'/../Silex-KE/vendor/assetic/src',
+    'SilexExtension'    => __DIR__.'/../vendor/Silex-extentions/src',
+    'Assetic'           => __DIR__.'/../vendor/assetic/src',
 
     'Openyard'          => __DIR__.'/../openyard-extensions',
     'OY'                => __DIR__.'/../openyard-extensions/Openyard',
