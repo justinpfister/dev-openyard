@@ -19,5 +19,11 @@ sudo chown -R www-data:webdev /var/www/*/cache
 sudo chmod -R ug=wrx,o= /var/www/*/cache
 
 
+sudo chown -R www-data:webdev /var/www/*/jarfiles
+
+sudo chmod -R ug=wrx,o= /var/www/*/jarfiles
+
+
+
 
 
