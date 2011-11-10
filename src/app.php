@@ -114,8 +114,8 @@ $app->register(new AsseticExtension(), array(
                 // Yui compressor is disabled by default.
                 // If you need it, and you have installed it, uncomment the
                 // next line, and delete "array()"
-                //array($fm->get('yui_js'))
-                array()
+                array($fm->get('yui_js'))
+                //array()
             ),
             new Assetic\Cache\FilesystemCache($app['assetic.path_to_cache'])
         ));

@@ -32,20 +32,15 @@ $app['http_cache.cache_dir'] = $app['cache.path'] . '/http';
 // Assetic
 $app['assetic.path_to_cache']       = $app['cache.path'] . DIRECTORY_SEPARATOR . 'assetic' ;
 $app['assetic.path_to_web']         = __DIR__ . '/../web/assets';
-
 $app['assetic.input.path_to_assets']    = __DIR__ . '/../';
-
 $app['assetic.input.path_to_css']       = array(
       __DIR__ . '/../' . 'vendor/Twitter-bootstrap/bootstrap.min.css',
 );
-
 $app['assetic.output.path_to_css']      = '/css/styles.css';
-
 $app['assetic.input.path_to_js']        = array(
       __DIR__ . '/../' . 'vendor/Twitter-bootstrap/js/bootstrap-twipsy.js',
       __DIR__ . '/../' . 'vendor/Twitter-bootstrap/js/bootstrap-alerts.js',
 );
-
 $app['assetic.output.path_to_js']       = '/js/scripts.js';
 
-$app['assetic.filter.yui_compressor.path'] = __DIR__ . '/../jarfiles/yuicompressor-2.4.6.jar';
+$app['assetic.filter.yui_compressor.path'] = __DIR__ . '/../jarfiles/yuicompressor.jar';
