@@ -8,7 +8,7 @@ $app['db.config.user']      = 'oydev';
 $app['db.config.password']  = 'XKp2XXJ88qYF5myP';
 
 // Debug
-$app['debug'] = true;
+$app['debug'] = false;
 
 // Local
 $app['locale'] = 'en';
@@ -37,16 +37,13 @@ $app['assetic.input.path_to_assets']    = __DIR__ . '/../';
 
 $app['assetic.input.path_to_css']       = array(
       __DIR__ . '/../' . 'vendor/Twitter-bootstrap/bootstrap.min.css',
-    //__DIR__ . '/../' . 'resources/assets/css/*.css',
 );
 
 $app['assetic.output.path_to_css']      = '/css/styles.css';
 
 $app['assetic.input.path_to_js']        = array(
-      __DIR__ . '/../' . 'vendor/Twitter-bootstrap/js/bootstrap-*.js',
-    //__DIR__ . '/../' . 'resources/assets/js/bootstrap-twipsy.js',
-    //__DIR__ . '/../' . 'resources/assets/js/bootstrap-*.js',
-    //__DIR__ . '/../' . 'resources/assets/js/script.js',
+      __DIR__ . '/../' . 'vendor/Twitter-bootstrap/js/bootstrap-twipsy.js',
+      __DIR__ . '/../' . 'vendor/Twitter-bootstrap/js/bootstrap-alerts.js',
 );
 
 $app['assetic.output.path_to_js']       = '/js/scripts.js';

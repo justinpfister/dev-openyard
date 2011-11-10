@@ -14,3 +14,10 @@ sudo chown -R www-data:webdev /var/www/*/web/assets
 
 sudo chmod -R ug=wrx,o= /var/www/*/web/assets
 
+sudo chown -R www-data:webdev /var/www/*/cache
+
+sudo chmod -R ug=wrx,o= /var/www/*/cache
+
+
+
+
