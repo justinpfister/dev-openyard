@@ -33,14 +33,17 @@ $app['http_cache.cache_dir'] = $app['cache.path'] . '/http';
 $app['assetic.path_to_cache']       = $app['cache.path'] . DIRECTORY_SEPARATOR . 'assetic' ;
 $app['assetic.path_to_web']         = __DIR__ . '/../web/assets';
 
-$app['assetic.input.path_to_bootstrap']    = __DIR__ . '/../vendor/Twitter-bootstrap';
-$app['assetic.input.path_to_css']       = $app['assetic.input.path_to_bootstrap'] . '/*.css';
+$app['assetic.input.path_to_assets']    = __DIR__ . '/../';
+
+$app['assetic.input.path_to_css']       = array(
+    __DIR__ . '/../' . 'vendor/Twitter-bootstrap/*.css',
+    );
+
 $app['assetic.output.path_to_css']      = '/css/styles.css';
 
 $app['assetic.input.path_to_js']        = array(
-    $app['assetic.input.path_to_bootstrap'] . '/js/bootstrap-twipsy.js',
-    $app['assetic.input.path_to_bootstrap'] . '/js/bootstrap-*.js',
-    $app['assetic.input.path_to_bootstrap'] . '/js/script.js',
+    __DIR__ . '/../' . 'vendor/Twitter-bootstrap/js/bootstrap-*.js',
+    __DIR__ . '/../' . 'resources/assets/js/script.js',
 );
 
 $app['assetic.output.path_to_js']       = '/js/scripts.js';
