@@ -20,7 +20,7 @@ use SilexExtension\MemcacheExtension;
 
 $app = new Silex\Application();
 
-require __DIR__ . '/../openyard-src/config.php';
+require __DIR__ . '/../src/config.php';
 
 $app->register(new SessionServiceProvider());
 // Dbal Sessions are activated below the Dbal Register
