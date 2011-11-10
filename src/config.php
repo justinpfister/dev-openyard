@@ -36,19 +36,19 @@ $app['assetic.path_to_web']         = __DIR__ . '/../web/assets';
 $app['assetic.input.path_to_assets']    = __DIR__ . '/../';
 
 $app['assetic.input.path_to_css']       = array(
-    //__DIR__ . '/../' . 'vendor/Twitter-bootstrap/*.css',
-    __DIR__ . '/../' . 'resources/assets/css/*.css',
+      __DIR__ . '/../' . 'vendor/Twitter-bootstrap/bootstrap.min.css',
+    //__DIR__ . '/../' . 'resources/assets/css/*.css',
 );
 
 $app['assetic.output.path_to_css']      = '/css/styles.css';
 
 $app['assetic.input.path_to_js']        = array(
-    //__DIR__ . '/../' . 'vendor/Twitter-bootstrap/js/bootstrap-*.js',
-    __DIR__ . '/../' . 'resources/assets/js/bootstrap-twipsy.js',
-    __DIR__ . '/../' . 'resources/assets/js/bootstrap-*.js',
-    __DIR__ . '/../' . 'resources/assets/js/script.js',
+      __DIR__ . '/../' . 'vendor/Twitter-bootstrap/js/bootstrap-*.js',
+    //__DIR__ . '/../' . 'resources/assets/js/bootstrap-twipsy.js',
+    //__DIR__ . '/../' . 'resources/assets/js/bootstrap-*.js',
+    //__DIR__ . '/../' . 'resources/assets/js/script.js',
 );
 
 $app['assetic.output.path_to_js']       = '/js/scripts.js';
 
-$app['assetic.filter.yui_compressor.path'] = '/usr/share/yui-compressor/yui-compressor.jar';
+$app['assetic.filter.yui_compressor.path'] = __DIR__ . '/../jarfiles/yuicompressor-2.4.6.jar';
