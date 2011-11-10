@@ -16,6 +16,6 @@ $loader->registerNamespaces(array(
 ));
 $loader->registerPrefixes(array(
     'Pimple' => __DIR__.'/../vendor/silex/vendor/pimple/lib',
-    'Twig_'  => array(__DIR__.'/../vendor/silex/vendor/twig/lib', __DIR__.'/../Silex-KE/vendor/Twig-extentions/Fabpot/lib/'),
+    'Twig_'  => array(__DIR__.'/../vendor/silex/vendor/twig/lib', __DIR__.'/../vendor/Twig-extensions/lib'),
 ));
 $loader->register();
