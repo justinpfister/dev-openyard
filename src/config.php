@@ -36,8 +36,8 @@ $app['assetic.path_to_web']         = __DIR__ . '/../web/assets';
 $app['assetic.input.path_to_assets']    = __DIR__ . '/../resources/assets';
 
 $app['assetic.input.path_to_css']       = array(
-    __DIR__ . '/../' . 'vendor/Twitter-bootstrap/bootstrap.min.css',
-    __DIR__ . '/../' . 'vendor/Twitter-bootstrap/bootstrap.css',
+   // __DIR__ . '/../' . 'vendor/Twitter-bootstrap/bootstrap.min.css',
+     __DIR__ . '/../' . 'vendor/Twitter-bootstrap/bootstrap.css',
      __DIR__ . '/../resources/assets/css/style.css',
     );
 

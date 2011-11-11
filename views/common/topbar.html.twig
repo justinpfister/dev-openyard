@@ -4,17 +4,29 @@
 
 <div style="z-index: 5;" class="topbar-wrapper">
     <div class="topbar">
-        <div class="topbar-inner">
-            <div class="container-fluid">
-                <h3><a href="{{ path('homepage') }}">{{ 'Kyotist'|trans }}</a></h3>
-                <ul class="nav">
-                    <li class="active"><a href="{{ path('homepage') }}">{{ 'Homepage'|trans }}</a></li>
-                    <li><a href="{{ path('page_with_cache') }}">Cache sample</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                </ul>
-                <ul class="nav secondary-nav">
-                    <li class="dropdown">
+<div class="topbar-inner">
+        <div class="container-fluid">
+          <h3><a href="#">(K)yotist</a></h3>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" href="#">Dropdown</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Secondary link</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Another link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form action="" class="pull-left">
+            <input type="text" placeholder="Search">
+          </form>
+          <ul class="nav secondary-nav">
+  <li class="dropdown">
                         <a class="dropdown-toggle" href="#">{{ 'Your account'|trans }}</a>
                         <ul class="dropdown-menu">
                             {% if app.session.get('user') %}
@@ -25,8 +37,12 @@
                             {% endif %}
                         </ul>
                     </li>
-                </ul>
-            </div>
-        </div><!-- /topbar-inner -->
-    </div><!-- /topbar -->
+          </ul>
+        </div>
+      </div>
+   </div><!-- /topbar -->
 </div>
+
+
+
+
