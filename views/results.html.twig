@@ -35,6 +35,46 @@
 
 
 
+<script src="{{ app.request.basepath }}/assets/js/"
+    __DIR__ . '/../resources/assets/js/jquery.tablesorter.min.js',
+<script >
+  $(function() {
+    $("table#sortTableExample").tablesorter({ sortList: [[1,0]] });
+  });
+</script>
+<table id="sortTableExample" class="zebra-striped">
+        <thead>
+          <tr>
+            <th class="header">#</th>
+            <th class="yellow header headerSortDown">First Name</th>
+            <th class="blue header">Last Name</th>
+            <th class="green header">Language</th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+
+        <tr>
+            <td>2</td>
+            <td>Joe</td>
+            <td>Sixpack</td>
+            <td>English</td>
+          </tr><tr>
+            <td>3</td>
+            <td>Stu</td>
+            <td>Dent</td>
+            <td>Code</td>
+          </tr><tr>
+            <td>1</td>
+            <td>Your</td>
+            <td>One</td>
+            <td>English</td>
+          </tr></tbody>
+      </table>
+
+
+
 
 </div>
 
