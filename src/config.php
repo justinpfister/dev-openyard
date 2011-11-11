@@ -8,7 +8,7 @@ $app['db.config.user']      = 'oydev';
 $app['db.config.password']  = 'XKp2XXJ88qYF5myP';
 
 // Debug
-$app['debug'] = false;
+$app['debug'] = true;
 
 // Local
 $app['locale'] = 'en';
@@ -34,12 +34,21 @@ $app['assetic.path_to_cache']       = $app['cache.path'] . DIRECTORY_SEPARATOR .
 $app['assetic.path_to_web']         = __DIR__ . '/../web/assets';
 
 $app['assetic.input.path_to_assets']    = __DIR__ . '/../resources/assets';
-$app['assetic.input.path_to_css']       = $app['assetic.input.path_to_assets'] . '/css/*.css';
+
+$app['assetic.input.path_to_css']       = array(
+    __DIR__ . '/../' . 'vendor/Twitter-bootstrap/bootstrap.min.css',
+    __DIR__ . '/../' . 'vendor/Twitter-bootstrap/bootstrap.css',
+     __DIR__ . '/../resources/assets/css/style.css',
+    );
+
+//$app['assetic.input.path_to_css']       = $app['assetic.input.path_to_assets'] . '/css/*.css';
+
+
 $app['assetic.output.path_to_css']      = '/css/styles.css';
 $app['assetic.input.path_to_js']        = array(
-    $app['assetic.input.path_to_assets'] . '/js/bootstrap-twipsy.js',
-    $app['assetic.input.path_to_assets'] . '/js/bootstrap-*.js',
-    $app['assetic.input.path_to_assets'] . '/js/script.js',
+    __DIR__ . '/../' . 'vendor/Twitter-bootstrap/js/bootstrap-twipsy.js',
+    __DIR__ . '/../' . 'vendor/Twitter-bootstrap/js/bootstrap-*.js',
+    __DIR__ . '/../resources/assets/js/script.js',
 );
 $app['assetic.output.path_to_js']       = '/js/scripts.js';
 
