@@ -49,6 +49,7 @@ $app['assetic.input.path_to_js']        = array(
     __DIR__ . '/../' . 'vendor/Twitter-bootstrap/js/bootstrap-twipsy.js',
     __DIR__ . '/../' . 'vendor/Twitter-bootstrap/js/bootstrap-*.js',
     __DIR__ . '/../resources/assets/js/script.js',
+    __DIR__ . '/../resources/assets/js/jquery.tablesorter.min.js',
 );
 $app['assetic.output.path_to_js']       = '/js/scripts.js';
 
