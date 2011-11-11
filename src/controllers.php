@@ -73,6 +73,7 @@ $app->get('/{type}/{searchstring}', function($type, $searchstring) use ($app)
 
 
 
+
 $app->match('/p/{prodid}/{title}', function($prodid,$title) use ($app) {
 
         //$app['product']->hello();
@@ -83,7 +84,7 @@ $app->match('/p/{prodid}/{title}', function($prodid,$title) use ($app) {
         //var_dump($app['session']);
         //echo $app['session']->read('email');
 
-        $app['session']->setFlash('notice', 'altered your search string!');
+        $app['session']->setFlash('notice', "UPDATE FOR YOU: " . $title);
         return $app->redirect($app['url_generator']->generate('r.searchstring', array('searchstring'=>'c_12_test')));
 
         echo "[SessionID" . $app['session']->getId() . "]";
