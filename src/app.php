@@ -37,8 +37,6 @@ $app->register(new UrlGeneratorServiceProvider());
 $app->register(new Openyard\ProductExtension());
 // End - Registering Openyard Classes
 
-
-
 //Memcache
 $app->register(new MemcacheExtension(), array(
     'memcache.library'    => 'memcache',

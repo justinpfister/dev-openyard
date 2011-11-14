@@ -11,6 +11,14 @@ use Symfony\Component\Form\FormError;
 use Silex\Provider\DoctrineServiceProvider;
 use Openyard\ProductSearch;
 
+
+$app->match('/test', function() use ($app) {
+
+ return $app['twig']->render('layout.html.twig');
+});
+
+
+
 $app->match('/hello/{lang}/{name}', function($lang,$name) use ($app) {
 
     return $app['twig']->render('layout.html.twig', array(
