@@ -57,7 +57,8 @@ function validsize($hw,$options) {
 if(    $imagemod == TRUE
     && isset($varvalarray['SL'])
     && isset($varvalarray['SY'])
-    && validsize(array($varvalarray['SL'],$varvalarray['SY']),array(100,200,250,300,500,800)) == true)
+    && validsize(array($varvalarray['SL'],$varvalarray['SY']),array(100,200,250,300,500,800)) == true
+)
  {
     $im = resize_image($basedir . $filelocation,$varvalarray['SL'],$varvalarray['SY']);
 
